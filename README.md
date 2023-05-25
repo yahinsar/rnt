@@ -9,4 +9,4 @@
 
 Пример запуска:
 
-`rnt.exe /f:prngTest5p.txt
+`rnt.exe /f:prngTest5p.txt`
