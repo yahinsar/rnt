@@ -1,0 +1,2260 @@
+\documentclass[bachelor, och, coursework]{shiza}
+% параметр - тип обучения - одно из значений:
+%    spec     - специальность
+%    bachelor - бакалавриат (по умолчанию)
+%    master   - магистратура
+% параметр - форма обучения - одно из значений:
+%    och   - очное (по умолчанию)
+%    zaoch - заочное
+% параметр - тип работы - одно из значений:
+%    referat    - реферат
+%    coursework - курсовая работа (по умолчанию)
+%    diploma    - дипломная работа
+%    pract      - отчет по практике
+% параметр - включение шрифта
+%    times    - включение шрифта Times New Roman (если установлен)
+%               по умолчанию выключен
+\usepackage{subfigure}
+\usepackage{tikz,pgfplots}
+\pgfplotsset{compat=1.5}
+\usepackage{float}
+\usepackage{pdfpages}
+
+%\usepackage{titlesec}
+\setcounter{secnumdepth}{4}
+%\titleformat{\paragraph}
+%{\normalfont\normalsize}{\theparagraph}{1em}{}
+%\titlespacing*{\paragraph}
+%{35.5pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+\titleformat{\paragraph}[block]
+{\hspace{1.25cm}\normalfont}
+{\theparagraph}{1ex}{}
+\titlespacing{\paragraph}
+{0cm}{2ex plus 1ex minus .2ex}{.4ex plus.2ex}
+
+% --------------------------------------------------------------------------%
+
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+\usepackage{tempora}
+
+\usepackage[sort,compress]{cite}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{fancyvrb}
+\usepackage{listings}
+\usepackage{listingsutf8}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage[english,russian]{babel}
+
+%\usepackage[colorlinks=true]{hyperref}
+\usepackage{url}
+
+\usepackage{underscore}
+\usepackage{setspace}
+\usepackage{indentfirst} 
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usepackage{multirow}
+\usepackage{colortbl}
+
+\usepackage{minted}
+\setminted{style=vs,autogobble=true,fontsize=\footnotesize,breaklines=true}
+\newcommand{\eqdef}{\stackrel {\rm def}{=}}
+\newcommand{\specialcell}[2][c]{%
+	\begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
+
+\renewcommand\theFancyVerbLine{\small\arabic{FancyVerbLine}}
+
+\newtheorem{lem}{Лемма}
+
+\lstset{%
+	language=C,
+	basicstyle=\ttfamily\fontsize{11pt}{11pt}\selectfont,
+	%basicstyle=\footnotesize\ttfamily,
+	breaklines=true,
+	%backgroundcolor=\color{gray!12},
+	basicstyle=\ttfamily\small,
+	keywordstyle=\color{blue},
+	commentstyle= \color{green},
+	stringstyle=\color{orange},
+	%identifierstyle=\color{yellow},
+	showstringspaces=false,
+	captionpos=b,
+	%numbers=left,
+	%numberstyle=\footnotesize\color{gray},
+	%frame=TB,
+	tabsize=2,
+	%keepspaces=true,
+	morekeywords={procedure, then, begin, end}
+}
+
+
+\begin{document}
+	
+	% Кафедра (в родительном падеже)
+	%\chair{теоритических основ компьютерной безопасности и криптографии}
+	
+	% Тема работы
+	%\title{Разделение секрета с помощью схемы Шамира}
+	
+	% Курс
+	%\course{3}
+	
+	% Группа
+	%\group{331}
+	
+	% Факультет (в родительном падеже) (по умолчанию "факультета КНиИТ")
+	%\department{факультета КНиИТ}
+	
+	% Специальность/направление код - наименование
+	%\napravlenie{09.03.04 "--- Программная инженерия}
+	%\napravlenie{010500 "--- Математическое обеспечение и администрирование информационных систем}
+	%\napravlenie{230100 "--- Информатика и вычислительная техника}
+	%\napravlenie{231000 "--- Программная инженерия}
+	%\napravlenie{100501 "--- Компьютерная безопасность}
+	
+	% Для студентки. Для работы студента следующая команда не нужна.
+	% \studenttitle{Студентки}
+	
+	% Фамилия, имя, отчество в родительном падеже
+	%\author{Яхина Шамиля Илдусовича}
+	
+	% Заведующий кафедрой
+	%\chtitle{доцент, к.ф.-м.н.} % степень, звание
+	%\chname{М.~Б.~Абросимов}
+	
+	%Научный руководитель (для реферата преподаватель проверяющий работу)
+	%\satitle{ассистент} %должность, степень, звание
+	%\saname{А. А. Лобов}
+	
+	% Руководитель практики от организации (только для практики,
+	% для остальных типов работ не используется)
+	%\patitle{к.ф.-м.н.}
+	%\paname{М.~Б.~Абросимов}
+	
+	% Семестр (только для практики, для остальных
+	% типов работ не используется)
+	%\term{8}
+	
+	% Наименование практики (только для практики, для остальных
+	% типов работ не используется)
+	%\practtype{преддипломная}
+	
+	% Продолжительность практики (количество недель) (только для практики,
+	% для остальных типов работ не используется)
+	%\duration{4}
+	
+	% Даты начала и окончания практики (только для практики, для остальных
+	% типов работ не используется)
+	%\practStart{30.04.2019}
+	%\practFinish{27.05.2019}
+	
+	% Год выполнения отчета
+	%\date{2022}
+	
+	%\maketitle
+	
+	% Включение нумерации рисунков, формул и таблиц по разделам
+	% (по умолчанию - нумерация сквозная)
+	% (допускается оба вида нумерации)
+	% \secNumbering
+	\includepdf{title-3.pdf}
+	
+	%-------------------------------------------------------------------------------------------
+	%\tableofcontents
+	%\includepdf{table-of-content.pdf}
+	%ПЛАН ДЛЯ КУРСОВОЙ:
+		
+	\section{Тестирование статистических свойств последовательности псевдослучайных чисел}
+	
+	Описание задания:
+	
+	Протестировать статистические свойства последовательности псевдослучайных чисел:
+	\begin{enumerate}
+		\item Вычислить математическое ожидание последовательности;
+		\item Вычислить среднеквадратичное отклонение последовательности;
+		\item Сравните полученные оценки с заданными в пп. 1 параметрами. Постройте графики зависимостей
+		оценок от объема выборки. Оцените относительные погрешности для какой-либо одной выборки.
+		\item Вычислить значение и дать ответ на вопрос удовлетворяет ли ППСЧ
+		\begin{enumerate}
+			\item Критерию хи-квадрат;
+			\item Критерию серий;
+			\item Критерию интервалов;
+			\item Критерию разбиений;
+			\item Критерию перестановок;
+			\item Критерию монотонности;
+			\item Критерию конфликтов.
+		\end{enumerate}
+	\end{enumerate} \
+
+	Описание используемых ПСЧ:
+	
+	В работе рассматриваются последовательности псевдослучайных величин, сгенерированные в первой части практической работы следующими алгоритмами:
+	\begin{enumerate}
+		\item Линейный конгруэнтный метод;
+		\item Аддитивный метод;
+		\item Пятипараметрический метод;
+		\item Регистр сдвига с обратной связью (РСЛОС);
+		\item Нелинейная комбинация РСЛОС;
+		\item Вихрь Мерсенна;
+		\item RC4;
+		\item ГПСЧ на основе RSA;
+		\item Алгоритм Блюма-Блюма-Шуба.
+	\end{enumerate}
+
+	После генерации данные последовательности с помощью программы из второй части практической работы были приведены к стандартному равномерному распределению с входными параметрами 0 и 0,999, т.е. каждое число $c$ из последовательности $\in [0, 0.999]$.
+	
+	\subsection{Мат. ожидание, среднекв. отклонение, сравнение с теоретическими оценками и построение графиков}
+	
+	Для того, чтобы найти \textbf{математическое ожидание} необходимо воспользоваться следующей формулой:
+	
+	\begin{center}
+		$M = \dfrac{\sum_{i = 1}^{k} x_i}{k}$,
+	\end{center}
+
+	где $x_i$ - числа последовательности, $k$ - количество таких чисел.
+	
+	Для того, чтобы найти \textbf{среднеквадратичное отклонение} необходимо воспользоваться следующей формулой:
+	
+	\begin{center}
+		$\sigma = \sqrt{\dfrac{\sum_{i = 1}^{k} |x_i - M|^2}{k}}$,
+	\end{center}
+	
+	где $x_i$ - числа последовательности, $k$ - количество таких чисел, $M$ - математическое ожидание.
+	
+	Теоретическая оценка при равномерном распределении для мат. ожидания равна 0.5, для среднеквадратичного отлонения примерно равна 0.2887.
+	
+	Далее необходимо посчитать относительную погрешность для одной выборки. Для этого необходимо сравнить полученные результаты с эталонными и вычислить погрешности согласно следующим формулам: 
+	
+		\begin{center}
+			$\Delta M = \dfrac{|M - 0.5|}{M}$, $\Delta Q = \dfrac{|Q - \sqrt{\dfrac{1}{12}}|}{M}$,
+		\end{center}
+			
+	 где $M$ – мат. ожидание, а $Q$ – среднекв. отклонение.
+	
+	Посчитаем данные показатели для рассматриваемых последовательностей:
+
+	\begin{center}
+		\begin{tabular}{|c|c|c|c|c|}
+			\hline
+			Генератор & \shortstack{ Мат. \\ ожидание} & \shortstack{Среднекв. \\ отклонение} & \multicolumn{2}{c|}{Погрешность}\\
+			\cline{4-5}
+			& & & \shortstack{Мат. \\ ожидания} & \shortstack{Среднекв. \\ отклонения}\\
+			\hline
+			lc & 0.497 & 0.287 & 0.006 & 0.005 \\
+			\hline
+			add & 0.496 & 0.287 & 0.009 & 0.007 \\
+			\hline
+			5p & 0.499 & 0.289 & 0.002 & 0.001 \\
+			\hline
+			lfsr & 0.496 & 0.286 & 0.008 & 0.008 \\
+			\hline
+			nfsr & 0.503 & 0.288 & 0.007 & 0.002 \\
+			\hline
+			mt & 0.501 & 0.287 & 0.002 & 0.005 \\
+			\hline
+			rc4 & 0.508 & 0.284 & 0.015 & 0.017 \\
+			\hline
+			rsa & 0.508 & 0.288 & 0.015 & 0.002 \\
+			\hline
+			bbs & 0.505 & 0.289 & 0.009 & 0.002 \\
+			\hline
+		\end{tabular}
+	\end{center}
+		
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{MatLc}
+		\caption{Вычисление показателей для генератора lc}
+		\label{fig:MatLc}
+	\end{figure}
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{MatAdd}
+		\caption{Вычисление показателей для генератора add}
+		\label{fig:MatAdd}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{Mat5p}
+		\caption{Вычисление показателей для генератора 5p}
+		\label{fig:Mat5p}
+	\end{figure}	
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{MatLfsr}
+		\caption{Вычисление показателей для генератора lfsr}
+		\label{fig:MatLfsr}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{MatNfsr}
+		\caption{Вычисление показателей для генератора nfsr}
+		\label{fig:MatNfsr}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{MatMt}
+		\caption{Вычисление показателей для генератора mt}
+		\label{fig:MatMt}
+	\end{figure}		
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{MatRc4}
+		\caption{Вычисление показателей для генератора rc4}
+		\label{fig:MatRc4}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{MatRsa}
+		\caption{Вычисление показателей для генератора rsa}
+		\label{fig:MatRsa}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{MatBbs}
+		\caption{Вычисление показателей для генератора bbs}
+		\label{fig:MatBbs}
+	\end{figure}	
+
+	Далее построим графики зависимости мат. ожидания от объема выборки и среднеквадратичного отклонения от объема выборки. Шаг: 50.	
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{GrLc}
+		\caption{Графики зависимости для генератора lc}
+		\label{fig:GrLc}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{GrAdd}
+		\caption{Графики зависимости для генератора add}
+		\label{fig:GrAdd}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{Gr5p}
+		\caption{Графики зависимости для генератора 5p}
+		\label{fig:Gr5p}
+	\end{figure}	
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{GrLfsr}
+		\caption{Графики зависимости для генератора lfsr}
+		\label{fig:GrLfsr}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{GrNfsr}
+		\caption{Графики зависимости для генератора nfsr}
+		\label{fig:GrNfsr}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{GrMt}
+		\caption{Графики зависимости для генератора mt}
+		\label{fig:GrMt}
+	\end{figure}		
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{GrRc4}
+		\caption{Графики зависимости для генератора rc4}
+		\label{fig:GrRc4}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{GrRsa}
+		\caption{Графики зависимости для генератора rsa}
+		\label{fig:GrRsa}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{GrBbs}
+		\caption{Графики зависимости для генератора bbs}
+		\label{fig:GrBbs}
+	\end{figure}	
+	
+	\subsection{Сравнение полученных оценок с теоретическими и построение графиков}
+	
+	\subsection{Проверка критериев}
+	
+	\subsubsection{Критерий хи-квадрат}
+	
+	Описание критерия:
+	
+	Проверка критерия $\chi^2$ для некоторой последовательности чисел (или наблюдений величины Х) будет состоять из следующих шагов:
+	
+	\begin{enumerate}
+		\item Выполняем достаточное число независимых наблюдений.
+		\item Подсчитываем число $n_i$ наблюдений попавших в каждый из интервалов $(a_i, b_i]$, $i = 1, \dots , k$.
+		\item Подсчитываем статистику
+				\begin{center}
+					$\chi^2 = \sum_{j = 1}^{k} \dfrac{(n_j - E_j)^2}{E_j}$;
+				\end{center}
+		\item Определяем, находится ли вычисленная в доверительном интервале.
+	\end{enumerate} \
+
+	Приведем результаты выполнения программы для каждого из генераторов:
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{ChiLc}
+		\caption{Результаты выполнения программы для генератора lc}
+		\label{fig:ChiLc}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{ChiAdd}
+		\caption{Результаты выполнения программы для генератора add}
+		\label{fig:ChiAdd}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{Chi5p}
+		\caption{Результаты выполнения программы для генератора 5p}
+		\label{fig:Chi5p}
+	\end{figure}	
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{ChiLfsr}
+		\caption{Результаты выполнения программы для генератора lfsr}
+		\label{fig:ChiLfsr}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{ChiNfsr}
+		\caption{Результаты выполнения программы для генератора nfsr}
+		\label{fig:ChiNfsr}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{ChiMt}
+		\caption{Результаты выполнения программы для генератора mt}
+		\label{fig:ChiMt}
+	\end{figure}		
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{ChiRc4}
+		\caption{Результаты выполнения программы для генератора rc4}
+		\label{fig:ChiRc4}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{ChiRsa}
+		\caption{Результаты выполнения программы для генератора rsa}
+		\label{fig:ChiRsa}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{ChiBbs}
+		\caption{Результаты выполнения программы для генератора bbs}
+		\label{fig:ChiBbs}
+	\end{figure}
+	
+	Исходный код программы: \
+	
+
+	\begin{minted}[fontsize=\footnotesize]{cpp}
+		bool checkXiSquareCriterion(vector <double> allElems) {
+			double maxElem = -1.0, minElem = 1.0;
+			int elemsCount = allElems.size();
+			for (int i = 0; i < elemsCount; i++)
+			{
+				double checkElem = allElems[i];
+				if (checkElem > maxElem)
+				maxElem = checkElem;
+				if (checkElem < minElem)
+				minElem = checkElem;
+			}
+			vector <pair <double, double>> allIntervals;
+			int intervalsCount = ceil(1 + 1.4 * log(elemsCount));
+			double IntS = (round(((maxElem - minElem) / intervalsCount) * 10000)) / 10000;
+			for (int i = 0; i < intervalsCount; i++) {
+				double a_i = minElem + IntS * i;
+				double b_i = minElem + IntS * (i + 1);
+				allIntervals.push_back(make_pair(a_i, b_i));
+			}
+			double expectedNumOfHits = round((elemsCount / intervalsCount) * 1000) / 1000;
+			vector <int> realDistribution(intervalsCount, 0);
+			for (int i = 0; i < elemsCount; i++)
+			for (int j = 0; j < intervalsCount; j++)
+			if (allIntervals[j].first <= allElems[i] && allElems[i] < allIntervals[j].second) {
+				realDistribution[j]++;
+				break;
+			}
+			double XiSquareDistribution = 0;
+			for (int i = 0; i < intervalsCount; i++)
+			XiSquareDistribution = XiSquareDistribution + ((realDistribution[i] - expectedNumOfHits) * (realDistribution[i] - expectedNumOfHits)) / expectedNumOfHits;
+			XiSquareDistribution = round(XiSquareDistribution * 10000) / 10000;
+			double criticalImportance = 22.36203;
+			cout << "\n > Количество интервалов: " << intervalsCount;
+			int k = intervalsCount - 1;
+			cout << "\n > Ожидаемое число попаданий в интервалы: " << expectedNumOfHits;
+			cout << "\n > Число попаданий в каждый из интервалов: \n";
+			for (int i = 0; i < intervalsCount; i++)
+			cout << "    " << i + 1 << ": " << realDistribution[i] << endl;
+			cout << "\n > Критическое значение хи-квадрат для " << k << " степеней свобод: " << criticalImportance;
+			cout << "\n > Значение критерия хи-квадрат с " << k << " степенью свободы: " << XiSquareDistribution << "\n";
+			if (0 < XiSquareDistribution && XiSquareDistribution < criticalImportance) {
+				cout << "\n[+++] Критерий пройден\n";
+				return true;
+			}
+			else {
+				cout << "\n[---] Критерий не пройден\n";
+				return false;
+			}
+		}
+	\end{minted}	
+	
+	\subsubsection{Критерий серий}	
+	
+	Описание критерия:
+
+	Критерий серий позволяет убедиться в том, что пары последовательных чисел равномерно
+	распределены независимым образом. Проверка критерия проводится следующим образом: 
+	
+	\begin{enumerate}
+		\item Воспользуемся критерием Хи-квадрат. Для этого преобразуем последовательность $X^n = (x_1, x_2, \dots, x_n)$ в $Y^n = (d[x_1], d[x_2], \dots, d[n])$ с некоторым $d$ (в реализации $d$ = 4).
+		\item Подсчитываем количество совпадений 
+				\begin{center}
+					$(y_{2j}, y_{2j+1}) = (q, r),	0 \leq j \leq n, 0 \leq q, r \leq d$.
+				\end{center}
+		\item Применяем Хи-квадрат критерий к полученному набору с параметрами:
+				\begin{center}
+					$k = d^2$, $p_j = \dfrac{1}{d^2}$;
+				\end{center}
+	\end{enumerate}
+	
+	Приведем результаты выполнения программы для каждого из генераторов:
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{SerLc}
+		\caption{Результаты выполнения программы для генератора lc}
+		\label{fig:SerLc}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{SerAdd}
+		\caption{Результаты выполнения программы для генератора add}
+		\label{fig:SerAdd}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{Ser5p}
+		\caption{Результаты выполнения программы для генератора 5p}
+		\label{fig:Ser5p}
+	\end{figure}	
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{SerLfsr}
+		\caption{Результаты выполнения программы для генератора lfsr}
+		\label{fig:SerLfsr}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{SerNfsr}
+		\caption{Результаты выполнения программы для генератора nfsr}
+		\label{fig:SerNfsr}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{SerMt}
+		\caption{Результаты выполнения программы для генератора mt}
+		\label{fig:SerMt}
+	\end{figure}		
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{SerRc4}
+		\caption{Результаты выполнения программы для генератора rc4}
+		\label{fig:SerRc4}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{SerRsa}
+		\caption{Результаты выполнения программы для генератора rsa}
+		\label{fig:SerRsa}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{SerBbs}
+		\caption{Результаты выполнения программы для генератора bbs}
+		\label{fig:SerBbs}
+	\end{figure}
+	
+	Исходный код программы:
+	
+	\begin{minted}[fontsize=\footnotesize]{cpp}
+		bool checkSeriesCriterion(vector <double> allElems) {
+			int d = 4;
+			vector <vector <int>> nPairs(d);
+			for (int i = 0; i < d; i++)
+			nPairs[i].resize(d, 0);
+			int k = d * d;
+			vector <pair <int, int>> pairCategories;
+			int elemsCount = allElems.size();
+			if (elemsCount % 2 != 0)
+			elemsCount--;
+			for (int j = 0; j < elemsCount; j+=2)
+			{
+				double leftI = floor(allElems[j] * d);
+				double rightI = floor(allElems[j + 1] * d);
+				pairCategories.push_back(make_pair(leftI, rightI));
+			}
+			double criticalImportance = 26.29623;
+			double expectedNumOfHits = round((elemsCount / (2 * k)) * 1000) / 1000;
+			for (int i = 0; i < pairCategories.size(); i++) {
+				nPairs[pairCategories[i].first][pairCategories[i].second] += 1;
+			}
+			double XiSquareDistribution = 0;
+			for (int i = 0; i < nPairs.size(); i++)
+			for (int x = 0; x < nPairs[i].size(); x++)
+			XiSquareDistribution += ((nPairs[i][x] - expectedNumOfHits) * (nPairs[i][x] - expectedNumOfHits)) / expectedNumOfHits;
+			XiSquareDistribution = round(XiSquareDistribution * 1000) / 1000;
+			cout << "\n > Параметр d: " << d;
+			cout << "\n > Ожидаемое количество чисел в каждой категории: " << expectedNumOfHits;
+			cout << "\n > Количество чисел в каждой категории: \n";
+			int chCount = 0;
+			for (int i = 0; i < nPairs.size(); i++) {
+				for (int x = 0; x < nPairs[i].size(); x++) {
+					chCount++;
+					cout << "   " << chCount << ": " << nPairs[i][x] << "\n";
+				}
+				chCount++;
+			}
+			cout << "\n > Критическое значение хи-квадрат для " << k << " степеней свобод: " << criticalImportance;
+			cout << "\n > Значение критерия хи-квадрат с " << k << " степенью свободы: " << XiSquareDistribution << "\n";
+			if (0 < XiSquareDistribution && XiSquareDistribution < criticalImportance) {
+				cout << "\n[+++] Критерий пройден\n";
+				return true;
+			}
+			else {
+				cout << "\n[---] Критерий не пройден\n";
+				return false;
+			}
+		}
+	\end{minted}
+	
+	\subsubsection{Критерий интервалов}
+		
+	Описание критерия:
+	
+	Пусть $a$ и $b$ – два действительных числа таких, что $0 \leq a < b \leq 1$. Рассмотрим длины подпоследовательностей $x_j, x_{j + 1}, \dots, x_{j + r}$, в которых $x_j, x_{j + 1}, \dots,$ $x_{j + r - 1} \notin [a, b], x_{j + r} \in [a, b]$. Такую последовательность будем назы-
+	вать интервалом длины $r$.
+	
+	Сначала, нам нужно подсчитать число интервалов длиной $0, 1, \dots, n$.
+	
+	Шаги алгоритма подсчета числа интервалов:
+	\begin{enumerate}
+		\item Инициализация. Присвоить $j$ = -1, $s$ = 0, $c_r$ = 0, $0 \leq r \leq t$.
+		\item $r$ = 0.
+		\item $j$ = $j$ + 1. Если $a \leq x_j \leq b$, то переход на шаг 5.
+		\item $r$ = $r$ + 1. Переход к шагу 3.
+		\item Если $r \leq t$, то $c_t$ = $c_t$ + 1, иначе – $c_r$ = $c_r$ + 1.
+		\item $s$ = $s$ + 1. Если $s < n$  то переход на шаг 2.
+	\end{enumerate}
+
+	После этого мы можем применить хи-квадрат критерий для $k$ = $t$ + 1 к
+	значениям $c_i$, $i$ = $0, 1, \dots , t$ с параметрами
+			\begin{center}
+				$p_r = p (1 - p) r$ для $0 \leq r \leq t - 1$;
+				$p_t = (1 - p) t$;
+				$p = (a - b)$.
+			\end{center}	
+
+	Здесь $p$ – вероятность того, что $a \leq x_j \leq b$. Значения $n$ и $t$ выбираются
+	так, чтобы ожидаемое значение $c_r$ было больше 5. \
+	
+	Приведем результаты выполнения программы для каждого из генераторов:
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{IntLc}
+		\caption{Результаты выполнения программы для генератора lc}
+		\label{fig:IntLc}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{IntAdd}
+		\caption{Результаты выполнения программы для генератора add}
+		\label{fig:IntAdd}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{Int5p}
+		\caption{Результаты выполнения программы для генератора 5p}
+		\label{fig:Int5p}
+	\end{figure}	
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{IntLfsr}
+		\caption{Результаты выполнения программы для генератора lfsr}
+		\label{fig:IntLfsr}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{IntNfsr}
+		\caption{Результаты выполнения программы для генератора nfsr}
+		\label{fig:IntNfsr}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{IntMt}
+		\caption{Результаты выполнения программы для генератора mt}
+		\label{fig:IntMt}
+	\end{figure}		
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{IntRc4}
+		\caption{Результаты выполнения программы для генератора rc4}
+		\label{fig:IntRc4}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{IntRsa}
+		\caption{Результаты выполнения программы для генератора rsa}
+		\label{fig:IntRsa}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{IntBbs}
+		\caption{Результаты выполнения программы для генератора bbs}
+		\label{fig:IntBbs}
+	\end{figure}
+	
+	Исходный код программы:
+	
+	\begin{minted}[fontsize=\footnotesize]{cpp}
+		bool checkIntervalsCriterion(vector <double> allElems) {
+			int t = 10, n = 1000;
+			srand((unsigned int)time(0));
+			double alpha = (double)(rand()) / RAND_MAX, beta = (double)(rand()) / RAND_MAX;
+			while (0.2 >= abs(alpha - beta) || abs(alpha - beta) >= 0.4) {
+				alpha = (double)(rand()) / RAND_MAX;
+				beta = (double)(rand()) / RAND_MAX;
+			}
+			if (beta < alpha) {
+				double dopD = alpha;
+				alpha = beta;
+				beta = dopD;
+			}
+			alpha = round(alpha * 1000) / 1000;
+			beta = round(beta * 1000) / 1000;
+			double p = beta - alpha;
+			int s = 0;
+			vector <int> count, resCount;
+			double XiSquareDistribution = 100000000000.0;
+			double criticalImportance = 100000000000.0;
+			int resT = 100000000000;
+			int intervalsCount = 100000000000;
+			vector <double> resPs;
+			s = 0;
+			count.resize(t + 1, 0);
+			int r = 0;
+			for (int j = 0; j < allElems.size(); j++) {
+				if (alpha <= allElems[j] && allElems[j] < beta) {
+					if (r >= t)
+					count[t]++;
+					else
+					count[r]++;
+					s++;
+					if (s < n)
+					r = 0;
+					else
+					break;
+				}
+				else
+				r++;
+			}
+			vector <double> probs;
+			for (int j = 0; j < t; j++)
+			probs.push_back(round((p * (powDouble(1.0 - p, j))) * 1000) / 1000);
+			double XiSch = 0.0;
+			probs.push_back(powDouble(1.0 - p, t));
+			double criticalImpDop = InterVector[t];
+			int qN = 0;
+			for (int j = 0; j < count.size(); j++)
+			qN += count[j];
+			for (int j = 0; j < probs.size(); j++) {
+				double est = qN * probs[j];
+				if (est == 0.0)
+				break;
+				XiSch += ((count[j] - est) * (count[j] - est)) / est;
+			}
+			if (XiSch < XiSquareDistribution) {
+				XiSquareDistribution = XiSch;
+				criticalImportance = criticalImpDop;
+				resT = t;
+				intervalsCount = n;
+				resPs = probs;
+				resCount = count;
+			}
+			int k = resT + 1;
+			cout << "\n > Максимальная длина интервала (t): " << resT;
+			cout << "\n > Количество интервалов (n): " << intervalsCount;
+			cout << "\n > Границы: alpha = " << alpha << " beta = " << beta;
+			cout << "\n > Пересчитанные вероятности Pr и Pt: \n";
+			cout << "   ";
+			for (int j = 0; j < resPs.size(); j++)
+			cout << resPs[j] << " ";
+			cout << "\n > Подсчитанные значения интервалов длиной 0, 1, ..., t - 1 и >= t (t = " << resT << "): \n";
+			cout << "   ";
+			for (int j = 0; j < resCount.size(); j++)
+			cout << resCount[j] << " ";
+			cout << "\n > Критическое значение хи-квадрат для " << k << " степеней свобод: " << criticalImportance;
+			cout << "\n > Значение критерия хи-квадрат с " << k << " степенью свободы: " << round(XiSquareDistribution * 1000) / 1000 << "\n";
+			if (0 < XiSquareDistribution && XiSquareDistribution < criticalImportance) {
+				cout << "\n[+++] Критерий пройден\n";
+				return true;
+			}
+			else {
+				cout << "\n[---] Критерий не пройден\n";
+				return false;
+			}
+		}
+	\end{minted}
+		
+	\subsubsection{Критерий разбиений}
+	
+	Описание критерия:
+	
+	В общем случае критерия разбиений рассматриваются $n$ групп $k$ последовательных чисел, и подсчитывается число групп из $k$ чисел с $r$ различными числами. Затем применяется хи-квадрат критерий, в котором используются вероятности того, что в группе $r$ различных чисел
+			\begin{center}
+				$p_r = \dfrac{d (d - 1) \dots (d - r + 1)}{d^k} \left\{ \substack{k\\r} \right\}$.
+			\end{center}
+	
+	Здесь $\left\{ \substack{k\\r} \right\}$ = $S(n, k)$ – числа Стирлинга, задающие число способов разбиения множества из $n$ элементов на $k$ непересекающихся подмножеств, которые можно вычислить по формуле:
+				\begin{center}
+					$S(n, k) = \dfrac{1}{k!} \sum_{j = 0}^{k} (-1)^{k + j} \left( \substack{k\\j} \right) j^n$,
+					
+					$\left( \substack{k\\j} \right) = \dfrac{k!}{j! (k - j)!}$.
+				\end{center}
+
+	Так как вероятности $p_r$ очень малы, когда $r$ = 1 или 2, следует, перед применением критерия хи-квадрат, объединить несколько категорий, имеющих малые вероятности в одну.
+	Чтобы получить формулу для $p_r$, следует подсчитать, сколько  $d^k$ групп из $k$ чисел, расположенных между $0$ и $d - 1$, имеют точно $r$ различных элементов, и разделить это число на $d^k$. 
+	
+	Приведем результаты выполнения программы для каждого из генераторов:
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{RazLc}
+		\caption{Результаты выполнения программы для генератора lc}
+		\label{fig:RazLc}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{RazAdd}
+		\caption{Результаты выполнения программы для генератора add}
+		\label{fig:RazAdd}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{Raz5p}
+		\caption{Результаты выполнения программы для генератора 5p}
+		\label{fig:Raz5p}
+	\end{figure}	
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{RazLfsr}
+		\caption{Результаты выполнения программы для генератора lfsr}
+		\label{fig:RazLfsr}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{RazNfsr}
+		\caption{Результаты выполнения программы для генератора nfsr}
+		\label{fig:RazNfsr}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{RazMt}
+		\caption{Результаты выполнения программы для генератора mt}
+		\label{fig:RazMt}
+	\end{figure}		
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{RazRc4}
+		\caption{Результаты выполнения программы для генератора rc4}
+		\label{fig:RazRc4}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{RazRsa}
+		\caption{Результаты выполнения программы для генератора rsa}
+		\label{fig:RazRsa}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{RazBbs}
+		\caption{Результаты выполнения программы для генератора bbs}
+		\label{fig:RazBbs}
+	\end{figure}
+	
+	Исходный код программы:
+	
+	\begin{minted}[fontsize=\footnotesize]{cpp}
+		bool checkPartitionCriterion(vector <double> allElems) {
+			int d = 8;
+			int k = 5;
+			vector <int> resFives(6, 0);
+			int elemsCount = allElems.size();
+			while (elemsCount % 5 != 0)
+			elemsCount = elemsCount - 1;
+			int sGr = elemsCount / k;
+			for (int i = 0; i < sGr; i++) {
+				set <int> dopGr;
+				for (int j = i * k; j < (i + 1) * k; j++)
+				dopGr.insert(floor(allElems[j] * d));
+				resFives[dopGr.size()] += 1;
+			}
+			double criticalImportance = 9.48773;
+			vector <double> fivePs = { 0, 0.0002, 0.0256, 0.2563, 0.5127, 0.2051 };
+			double XiSquareDistribution = 0;
+			for (int i = 1; i < resFives.size(); i++)
+			XiSquareDistribution = XiSquareDistribution + ((resFives[i] - fivePs[i] * sGr) * (resFives[i] - fivePs[i] * sGr)) / (fivePs[i] * sGr);
+			XiSquareDistribution = round(XiSquareDistribution * 1000) / 1000;
+			cout << "\n > Параметр d: " << d;
+			cout << "\n > Параметр k: " << k;
+			for (int i = 1; i < resFives.size(); i++) {
+				cout << "   Количество пятерок, где " << i << " различных значений: ";
+				cout << resFives[i] << "\n";
+			}
+			cout << "\n > Теоретические вероятности для каждой из пятерок: ";
+			for (int i = 1; i < fivePs.size(); i++)
+			cout << "   " << i << ": " << fivePs[i] << "\n";
+			cout << "\n > Критическое значение хи-квадрат для " << k - 1 << " степеней свобод: " << criticalImportance;
+			cout << "\n > Значение критерия хи-квадрат с " << k - 1 << " степенью свободы: " << XiSquareDistribution << "\n";
+			if (0 < XiSquareDistribution && XiSquareDistribution < criticalImportance) {
+				cout << "\n[+++] Критерий пройден\n";
+				return true;
+			}
+			else {
+				cout << "\n[---] Критерий не пройден\n";
+				return false;
+			}
+		}
+	\end{minted}
+	
+	\subsubsection{Критерий перестановок}
+	
+	Описание критерия:
+
+	Последовательность $X^m=(x_1, x_2, \dots, x_m)$ разбивается на $n$ групп по $t$ элементов в каждой:
+			\begin{center}
+				$u_j = (x_{jt}, x_{jt+1}, \dots, x_{jt+t-1} ), 0 \leq j < n$.
+			\end{center}
+	
+	Элементы в каждой группе можно упорядочивать $t!$ различными способами. Подсчитывается число групп с любым возможным порядком и применяется хи-квадрат критерий с $k$ = $t!$ возможными категориями и вероятностью $\dfrac{1}{t!}$ для каждой категории. В этом критерии предполагается, что $x_s$ не могут быть равны между собой. В реализации берется $t$ = 4. \
+	
+	Приведем результаты выполнения программы для каждого из генераторов:
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{PerLc}
+		\caption{Результаты выполнения программы для генератора lc}
+		\label{fig:PerLc}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{PerAdd}
+		\caption{Результаты выполнения программы для генератора add}
+		\label{fig:PerAdd}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{Per5p}
+		\caption{Результаты выполнения программы для генератора 5p}
+		\label{fig:Per5p}
+	\end{figure}	
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{PerLfsr}
+		\caption{Результаты выполнения программы для генератора lfsr}
+		\label{fig:PerLfsr}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{PerNfsr}
+		\caption{Результаты выполнения программы для генератора nfsr}
+		\label{fig:PerNfsr}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{PerMt}
+		\caption{Результаты выполнения программы для генератора mt}
+		\label{fig:PerMt}
+	\end{figure}		
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{PerRc4}
+		\caption{Результаты выполнения программы для генератора rc4}
+		\label{fig:PerRc4}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{PerRsa}
+		\caption{Результаты выполнения программы для генератора rsa}
+		\label{fig:PerRsa}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{PerBbs}
+		\caption{Результаты выполнения программы для генератора bbs}
+		\label{fig:PerBbs}
+	\end{figure}
+	
+	Исходный код программы:
+	
+	\begin{minted}[fontsize=\footnotesize]{cpp}
+		int dopPermutationFunction(vector <double> permVec) {
+			int r = 4;
+			int fRes = 0;
+			while (r > 0) {
+				int s = 0;
+				double maxV = -10.0;
+				for (int i = 0; i < permVec.size(); i++)
+				if (maxV < permVec[i]) {
+					maxV = permVec[i];
+					s = i;
+				}
+				s++;
+				fRes = r * fRes + s - 1;
+				double dopV = permVec[r - 1];
+				permVec[r - 1] = permVec[s - 1];
+				permVec[s - 1] = dopV;
+				permVec.resize(permVec.size() - 1);
+				r--;
+			}
+			return fRes;
+		}
+		
+		bool checkPermutationsCriterion(vector <double> allElems) {
+			int t = 4;
+			int myT = 1;
+			for (int i = 1; i <= t; i++)
+			myT *= i;
+			int sizeinVals = allElems.size();
+			while (sizeinVals % 4 != 0)
+			sizeinVals = sizeinVals - 1;
+			double criticalImportance = 36.41503;
+			int nGr = sizeinVals / t;
+			vector <int> resCategories(myT, 0);
+			for (int i = 0; i < nGr; i++) {
+				vector <double> cGr;
+				set <double> dopGrc;
+				for (int j = i * t; j < (i + 1) * t; j++) {
+					cGr.push_back(allElems[j]);
+					dopGrc.insert(allElems[j]);
+				}
+				if (dopGrc.size() != t)
+				continue;
+				else
+				resCategories[dopPermutationFunction(cGr)] += 1;
+			}
+			double expectedP = round((1.0 / myT) * 1000) / 1000;
+			double XiSquareDistribution = 0.0;
+			double expectedCategoriesValue = round((expectedP * nGr) * 1000) / 1000;
+			cout << "\n > Параметр t: " << t;
+			cout << "\n > Теоретическое количество попаданий в каждую категорию: " << expectedCategoriesValue;
+			cout << "\n > Вычисленное распределение по частотам: ";
+			for (int i = 0; i < resCategories.size(); i++)
+			cout << resCategories[i] << " ";
+			cout << "\n > Теоретическое значение вероятности для каждой категории: " << expectedP;
+			for (int i = 0; i < myT; i++)
+			XiSquareDistribution = XiSquareDistribution + ((resCategories[i] - expectedCategoriesValue) * (resCategories[i] - expectedCategoriesValue)) / expectedCategoriesValue;
+			XiSquareDistribution = round(XiSquareDistribution * 1000) / 1000;
+			cout << "\n > Критическое значение хи-квадрат для " << myT << " степеней свобод: " << criticalImportance;
+			cout << "\n > Значение критерия хи-квадрат с " << myT << " степенью свободы: " << XiSquareDistribution << "\n";
+			if (0 < XiSquareDistribution && XiSquareDistribution < criticalImportance) {
+				cout << "\n[+++] Критерий пройден\n";
+				return true;
+			}
+			else {
+				cout << "\n[---] Критерий не пройден\n";
+				return false;
+			}
+		}
+	\end{minted}
+		
+	\subsubsection{Критерий монотонности}
+	
+	Описание критерия:
+	
+	Последовательность можно проверить на предмет равномерности распре-
+	деления монотонных серий чисел.
+	
+	Суть метода в том, чтобы проверить длины всех восходящих серий $c_i$ в последовательности и подсчитать для них статистику.
+	
+	Для решения проблемы чередования длинных серий с короткими сериями можно сделать следующее: 
+	
+	\begin{enumerate}
+		\item «Выбрасываем» элемент последовательности, который следует непосредственно за серией.
+		\item Если $x_j$  больше $x_{j+1}$, то начнем следующую серию с $x_{j+2}$.
+		\item Мы получаем серии, длины которых независимы и, поэтому, можно использовать критерий хи-квадрат.
+	\end{enumerate}
+	
+	Приведем результаты выполнения программы для каждого из генераторов:
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{MonLc}
+		\caption{Результаты выполнения программы для генератора lc}
+		\label{fig:MonLc}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{MonAdd}
+		\caption{Результаты выполнения программы для генератора add}
+		\label{fig:MonAdd}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{Mon5p}
+		\caption{Результаты выполнения программы для генератора 5p}
+		\label{fig:Mon5p}
+	\end{figure}	
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{MonLfsr}
+		\caption{Результаты выполнения программы для генератора lfsr}
+		\label{fig:MonLfsr}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{MonNfsr}
+		\caption{Результаты выполнения программы для генератора nfsr}
+		\label{fig:MonNfsr}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{MonMt}
+		\caption{Результаты выполнения программы для генератора mt}
+		\label{fig:MonMt}
+	\end{figure}		
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{MonRc4}
+		\caption{Результаты выполнения программы для генератора rc4}
+		\label{fig:MonRc4}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{MonRsa}
+		\caption{Результаты выполнения программы для генератора rsa}
+		\label{fig:MonRsa}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{MonBbs}
+		\caption{Результаты выполнения программы для генератора bbs}
+		\label{fig:MonBbs}
+	\end{figure}
+	
+	Исходный код программы:
+	
+	\begin{minted}[fontsize=\footnotesize]{cpp}
+		bool checkMonotonicityCriterion(vector <double> allElems) {
+			vector <pair <int, int>> categor;
+			vector <double> ojid;
+			double XiSquareDistribution = 0.0;
+			int posl = 1, i = 1;
+			while (i < allElems.size() - 1) {
+				if (allElems[i] < allElems[i + 1])
+				posl += 1;
+				else {
+					int num = -1;
+					if (categor.size() != 0) {
+						for (int j = 0; j < categor.size(); j++) {
+							if (categor[j].first == posl) {
+								num = j;
+								break;
+							}
+						}
+						if (num == -1)
+						categor.push_back(make_pair(posl, 1));
+						else
+						categor[num].second += 1;
+					}
+					else
+					categor.push_back(make_pair(posl, 1));
+					posl = 1;
+					i = i + 1;
+				}
+				i += 1;
+			}
+			int sumS = 0;
+			for (int j = 0; j < categor.size(); j++)
+			sumS = sumS + categor[j].second;
+			int num_categs = categor.size();
+			double criticalImportance = InterVector[num_categs - 1];
+			int maximal = -1;
+			for (int j = 0; j < categor.size(); j++)
+			if (categor[j].first > maximal)
+			maximal = categor[j].first;
+			long long fact = 1;
+			for (int j = 1; j < maximal + 1; j++) {
+				fact *= j;
+				ojid.push_back(1.0 / fact - 1.0 / (fact * (j + 1)));
+			}
+			for (int j = 0; j < num_categs; j++)
+			ojid[j] = (sumS * ojid[j]);
+			for (int j = 0; j < num_categs; j++)
+			XiSquareDistribution = XiSquareDistribution + round((((categor[j].second - ojid[categor[j].first - 1]) * (categor[j].second - ojid[categor[j].first - 1])) / ojid[categor[j].first - 1]) * 1000) / 1000;
+			cout << "\n > Теоретические значения длин серий: ";
+			for (int j = 0; j < ojid.size(); j++)
+			cout << round(ojid[j]) << " ";
+			cout << "\n > Вычисленные значения длин серий: ";
+			set <pair <int, int>> need;
+			for (int j = 0; j < categor.size(); j++)
+			need.insert(categor[j]);
+			for (pair <int, int> a : need)
+			cout << a.first << ": " << a.second << " ";
+			cout << "\n > Критическое значение хи-квадрат для " << num_categs << " степеней свобод: " << criticalImportance;
+			cout << "\n > Значение критерия хи-квадрат с " << num_categs << " степенью свободы: " << XiSquareDistribution << "\n";
+			if (0 < XiSquareDistribution && XiSquareDistribution < criticalImportance) {
+				cout << "\n[+++] Критерий пройден\n";
+				return true;
+			}
+			else {
+				cout << "\n[---] Критерий не пройден\n";
+				return false;
+			}
+			
+		}
+	\end{minted}
+		
+	\subsubsection{Критерий конфликтов}
+	
+	Описание критерия:
+	
+	Предположим, нам нужно оценить последовательность случайных чисел, в которой число величин в последовательности намного меньше числа категорий. В этом случае критерий хи-квадрат не применим, но можно использовать критерий конфликтов. 
+	
+	Предположим, что у нас m урн и n шаров, причем m значительно больше $n$. Если разместить шары в урнах наугад, то некоторые урны останутся пустыми, а в некоторых будет более одного шара. Когда в одну урну попадает больше одного шара, то говорят, что произошел «конфликт». Критерий конфликтов состоит в подсчете и оценке количества конфликтов.
+	
+	Рассмотрим пример, когда $m = 2^{20}$, а $n = 2^{14}$. В среднем, число урн, приходящихся на один шар – 64. Вероятность того, что в конкретную урну попадет ровно $k$ шаров, равна
+	
+			\begin{center}
+				$p_k = \left( \substack{n\\k} \right) m^{-k} (1-m^{-1})^{n-k}$,
+			\end{center}
+		
+	отсюда, среднее число конфликтов в урне вычисляется по формуле
+	
+			\begin{center}
+				$\sum_{k \leq 1} (k - 1) p_k = \sum_{k \leq 1} k p_k - \sum_{k \leq 1} p_k = \dfrac{n}{m} - 1 + p_0$.
+			\end{center}
+	
+	Так как $p_0 = (1 - m^{-1} )^n = 1-n m^{-1} + \left( \substack{n\\2} \right) m^(-2)$ – маленькое число, получим, что общее среднее число конфликтов во всех $m$ урнах намного меньше 
+	
+				\begin{center}
+					$\dfrac{n^2}{2 m} = 128$.
+				\end{center}
+	
+	Приведем результаты выполнения программы для каждого из генераторов:
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{KonLc}
+		\caption{Результаты выполнения программы для генератора lc}
+		\label{fig:KonLc}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{KonAdd}
+		\caption{Результаты выполнения программы для генератора add}
+		\label{fig:KonAdd}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{Kon5p}
+		\caption{Результаты выполнения программы для генератора 5p}
+		\label{fig:Kon5p}
+	\end{figure}	
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{KonLfsr}
+		\caption{Результаты выполнения программы для генератора lfsr}
+		\label{fig:KonLfsr}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{KonNfsr}
+		\caption{Результаты выполнения программы для генератора nfsr}
+		\label{fig:KonNfsr}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{KonMt}
+		\caption{Результаты выполнения программы для генератора mt}
+		\label{fig:KonMt}
+	\end{figure}		
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{KonRc4}
+		\caption{Результаты выполнения программы для генератора rc4}
+		\label{fig:KonRc4}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{KonRsa}
+		\caption{Результаты выполнения программы для генератора rsa}
+		\label{fig:KonRsa}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{KonBbs}
+		\caption{Результаты выполнения программы для генератора bbs}
+		\label{fig:KonBbs}
+	\end{figure}
+	
+	Исходный код программы:
+	
+	\begin{minted}[fontsize=\footnotesize]{cpp}
+		vector <pair <int, double>> ConflictCriterionPercentPoints(int m, int n) {
+			vector <double> auxiliaryTableT = { 0.01, 0.05, 0.25, 0.50, 0.75, 0.95, 0.99, 1.0 };
+			vector <double> auxiliaryA(n + 1, 0.0);
+			vector <pair <int, double>> conflictsResP;
+			auxiliaryA[1] = 1.0;
+			int j0 = 1;
+			int j1 = 1;
+			for (int i = 0; i < n - 1; i++) {
+				j1++;
+				for (int j = j1; j > j0 - 1; j--) {
+					double jm = j / (m * 1.0);
+					auxiliaryA[j] = jm * auxiliaryA[j] + (1.0 + 1.0 / m - jm) * auxiliaryA[j - 1];
+					if (auxiliaryA[j] < 1e-20) {
+						auxiliaryA[j] = 0.0;
+						if (j == j1) {
+							j1--;
+							continue;
+						}
+						if (j == j0)
+						j0++;
+					}
+				}
+			}
+			int t = 0;
+			int j = j0 - 1;
+			double p = 0.0;
+			while (t != auxiliaryTableT.size() - 1) {
+				while (p <= auxiliaryTableT[t]) {
+					j++;
+					p += auxiliaryA[j];
+				}
+				conflictsResP.push_back(make_pair(n - j - 1, round((1 - p) * 1000) / 1000));
+				t++;
+			}
+			reverse(conflictsResP.begin(), conflictsResP.end());
+			return conflictsResP;
+			
+		}
+		
+		bool checkConflictCriterion(vector <double> allElems) {
+			srand((unsigned int)time(0));
+			double eps = 1e-20;
+			vector <vector <pair<int, double>>> appropriatePercentPoints;
+			vector <vector <int>> appropriatePointsTable;
+			for (int bigSize = 8; bigSize < 21; bigSize++) {
+				int nParameter = allElems.size() / bigSize;
+				for (int dParameter = 2; dParameter < 9; dParameter++) {
+					int j = 0;
+					vector <int> normSeq;
+					while (j < allElems.size()) {
+						if (allElems[j] == 1.0)
+						allElems[j] = 0.965;
+						normSeq.push_back((floor(allElems[j] * dParameter)));
+						j++;
+					}
+					set <vector <int>> words;
+					int nDimension = 0;
+					for (int jI = 0; jI < nParameter; jI++) {
+						vector <int> dopSliced;
+						for (int i = jI * bigSize; i < (jI + 1) * bigSize; i++) {
+							dopSliced.push_back(normSeq[i]);
+						}
+						auto search = words.find(dopSliced);
+						if (search == words.end())
+						words.insert(dopSliced);
+						else
+						nDimension += 1;
+					}
+					for (int mParameter = 16; mParameter < 129; mParameter++) {
+						int  mV = nParameter * mParameter;
+						vector <pair <int, double>> confs_et_probs = ConflictCriterionPercentPoints(mV, nParameter);
+						if (nDimension == 0 || confs_et_probs[0].first == -1 || confs_et_probs[0].first == 0)
+						continue;
+						if (confs_et_probs[2].first <= nDimension && nDimension <= confs_et_probs[confs_et_probs.size() - 2].first) {
+							appropriatePercentPoints.push_back(confs_et_probs);
+							vector <int> prom = { nDimension, bigSize, nParameter, dParameter, mParameter, mV };
+							appropriatePointsTable.push_back(prom);
+						}
+					}
+				}
+			}
+			int appropriatePercentPointsCount = appropriatePercentPoints.size();
+			set <int> setRand;
+			for (int j = 0; j < 5; j++) {
+				
+				int randInt = (double)(rand()) / RAND_MAX * appropriatePercentPointsCount - 1;
+				auto search1 = setRand.find(randInt);
+				if (search1 == setRand.end())
+				setRand.insert(randInt);
+				else {
+					while (search1 == setRand.end()) {
+						randInt = (double)(rand()) / RAND_MAX * appropriatePercentPointsCount - 1;
+						search1 = setRand.find(randInt);
+					}
+				}
+			}
+			cout << "\n > Число параметров, при которых представленная последовательность удовлетворяет критерию конфликтов: " << appropriatePercentPointsCount;
+			cout << "\n > Приведем случай, которая параметры подходят:";
+			cout << "\n     Размерность вектора Vj: " << appropriatePointsTable[0][1];
+			cout << "\n     Количество векторов: " << appropriatePointsTable[0][2];
+			cout << "\n     Значение m: " << appropriatePointsTable[0][5];
+			cout << "\n     Множитель для m: " << appropriatePointsTable[0][4];
+			cout << "\n     Параметр нормирования d: " << appropriatePointsTable[0][3];
+			cout << "\n     Количество возникших конфликтов: " << appropriatePointsTable[0][0];
+			cout << "\n     Таблица процентных точек: ";
+			for (int k = 0; k < appropriatePercentPoints[0].size(); k++) {
+				cout << "(" << appropriatePercentPoints[0][k].first << ", " << appropriatePercentPoints[0][k].second << ") ";
+			}
+			cout << "\n";
+			if (appropriatePercentPointsCount > 0) {
+				cout << "\n[+++] Критерий пройден\n";
+				return true;
+			}
+			else {
+				cout << "\n[---] Критерий не пройден\n";
+				return false;
+			}
+		}
+	\end{minted}
+	
+	\subsubsection{Результаты проверки всех критериев для последовательностей, сгенерированных каждым генератором}
+	
+	В следующей таблице представлены результаты проверки для всех сгенерированных последовательностей по каждому из рассмотренных выше критериев. Зеленый цвет - критерий пройден, красный - не пройден.
+	
+	\begin{center}
+		\begin{tabular}{|c|c|c|c|c|c|c|c|}
+			\hline
+			$ $ & $\chi^2$ & серий & интервал. & разбиений & перест. & монот. & конфл. \\
+			\hline
+			lc & \cellcolor[RGB]{71,167,106} 3.2297 & \cellcolor[RGB]{71,167,106} 3.353 & \cellcolor[RGB]{71,167,106} 13.313 & \cellcolor[RGB]{71,167,106} 2.037 & \cellcolor[RGB]{155,45,48} 119.287 & \cellcolor[RGB]{155,45,48} 46.48 & \cellcolor[RGB]{71,167,106} 148 \\
+			\hline
+			add & \cellcolor[RGB]{155,45,48} 24.7563 & \cellcolor[RGB]{71,167,106} 15.019 & \cellcolor[RGB]{71,167,106} 9.321 & \cellcolor[RGB]{71,167,106} 9.402 & \cellcolor[RGB]{71,167,106} 18.99 & \cellcolor[RGB]{71,167,106} 2.279 & \cellcolor[RGB]{71,167,106} 106 \\
+			\hline
+			5p & \cellcolor[RGB]{71,167,106} 9.5378 & \cellcolor[RGB]{155,45,48} 65.929 & \cellcolor[RGB]{71,167,106} 12.985 & \cellcolor[RGB]{71,167,106} 3.94 & \cellcolor[RGB]{155,45,48} 131.638 & \cellcolor[RGB]{155,45,48} 3991940 & \cellcolor[RGB]{71,167,106} 378 \\
+			\hline
+			lfsr & \cellcolor[RGB]{71,167,106} 12.902 & \cellcolor[RGB]{155,45,48} 2097.11 & \cellcolor[RGB]{155,45,48} 30.225 & \cellcolor[RGB]{155,45,48} 52.143 & \cellcolor[RGB]{155,45,48} 481.057 & \cellcolor[RGB]{155,45,48} 371.465 & \cellcolor[RGB]{71,167,106} 211 \\
+			\hline
+			nfsr & \cellcolor[RGB]{71,167,106} 7.7395 & \cellcolor[RGB]{155,45,48} 3947.99 & \cellcolor[RGB]{155,45,48} 358.885 & \cellcolor[RGB]{155,45,48} 677.402 & \cellcolor[RGB]{155,45,48} 1584.28 & \cellcolor[RGB]{155,45,48} 43547900 & \cellcolor[RGB]{71,167,106} 333 \\
+			\hline
+			mt & \cellcolor[RGB]{71,167,106} 13.916 & \cellcolor[RGB]{71,167,106} 12.808 & \cellcolor[RGB]{71,167,106} 5.571 & \cellcolor[RGB]{71,167,106} 2.233 & \cellcolor[RGB]{71,167,106} 20.038 & \cellcolor[RGB]{71,167,106} 6.745 & \cellcolor[RGB]{71,167,106} 115 \\
+			\hline
+			rc4 & \cellcolor[RGB]{155,45,48} 822.272 & \cellcolor[RGB]{155,45,48} 135.25 & \cellcolor[RGB]{155,45,48} 30.929 & \cellcolor[RGB]{71,167,106} 4.392 & \cellcolor[RGB]{71,167,106} 26.81 & \cellcolor[RGB]{71,167,106} 10.65 & \cellcolor[RGB]{71,167,106} 130 \\
+			\hline
+			rsa & \cellcolor[RGB]{155,45,48} 164.639 & \cellcolor[RGB]{155,45,48} 57.526 & \cellcolor[RGB]{155,45,48} 29.857 & \cellcolor[RGB]{71,167,106} 3.496 & \cellcolor[RGB]{155,45,48} 11.238 & \cellcolor[RGB]{71,167,106} 18.575 & \cellcolor[RGB]{71,167,106} 87 \\
+			\hline
+			bbs & \cellcolor[RGB]{71,167,106} 17.7563 & \cellcolor[RGB]{71,167,106} 16.006 & \cellcolor[RGB]{71,167,106} 6.135 & \cellcolor[RGB]{71,167,106} 4.856 & \cellcolor[RGB]{71,167,106} 18.029 & \cellcolor[RGB]{71,167,106} 1.422 & \cellcolor[RGB]{71,167,106} 99 \\
+			\hline
+		\end{tabular}
+	\end{center}
+	
+	
+	\newpage
+	\appendix
+	\section{Исходный код программы проверки критериев}
+	
+	\begin{minted}[fontsize=\footnotesize]{cpp}
+		#define _USE_MATH_DEFINES
+		
+		#include <iostream>
+		#include <string>
+		#include <vector>
+		#include <fstream>
+		#include <iomanip>
+		#include <bitset>
+		#include <sstream>
+		#include <deque>
+		#include <cmath>
+		#include <set>
+		
+		using namespace std;
+		
+		string findInStr(string const& str, int n) {
+			if (str.length() < n) {
+				return str;
+			}
+			return str.substr(0, n);
+		}
+		
+		void helpFunc() {
+			cout << "\n\n/f:<имя_файла> - имя файла с входной последовательностью";
+			cout << "\n\n/h – информация о допустимых параметрах командной строки программы.\n";
+		}
+		
+		
+		double calculateExpValue(vector <double> allElems) {
+			double elemsCount = allElems.size();
+			double elemsSum = 0;
+			for (int i = 0; i < allElems.size(); i++) {
+				elemsSum += allElems[i];
+			}
+			return elemsSum / elemsCount;
+		}
+		
+		double calculateStandartDeviation(vector <double> allElems, double expValue) {
+			double elemsCount = allElems.size();
+			double elemsSum = 0;
+			for (int i = 0; i < allElems.size(); i++) {
+				elemsSum = elemsSum + (allElems[i] - expValue) * (allElems[i] - expValue);
+			}
+			return sqrt(elemsSum / elemsCount);
+		}
+		
+		double calculateExpValueError(double expValue) {
+			return abs(expValue - 0.5) / expValue;
+		}
+		
+		double calculateStandartDeviationError(double standartDeviation) {
+			double sqrt1_12 = sqrt(1.0 / 12);
+			return abs(standartDeviation - sqrt1_12) / standartDeviation;
+		}
+		
+		bool checkXiSquareCriterion(vector <double> allElems) {
+			double maxElem = -1.0, minElem = 1.0;
+			int elemsCount = allElems.size();
+			for (int i = 0; i < elemsCount; i++)
+			{
+				double checkElem = allElems[i];
+				if (checkElem > maxElem)
+				maxElem = checkElem;
+				if (checkElem < minElem)
+				minElem = checkElem;
+			}
+			vector <pair <double, double>> allIntervals;
+			int intervalsCount = ceil(1 + 1.4 * log(elemsCount));
+			double IntS = (round(((maxElem - minElem) / intervalsCount) * 10000)) / 10000;
+			for (int i = 0; i < intervalsCount; i++) {
+				double a_i = minElem + IntS * i;
+				double b_i = minElem + IntS * (i + 1);
+				allIntervals.push_back(make_pair(a_i, b_i));
+			}
+			double expectedNumOfHits = round((elemsCount / intervalsCount) * 1000) / 1000;
+			vector <int> realDistribution(intervalsCount, 0);
+			for (int i = 0; i < elemsCount; i++)
+			for (int j = 0; j < intervalsCount; j++)
+			if (allIntervals[j].first <= allElems[i] && allElems[i] < allIntervals[j].second) {
+				realDistribution[j]++;
+				break;
+			}
+			double XiSquareDistribution = 0;
+			for (int i = 0; i < intervalsCount; i++)
+			XiSquareDistribution = XiSquareDistribution + ((realDistribution[i] - expectedNumOfHits) * (realDistribution[i] - expectedNumOfHits)) / expectedNumOfHits;
+			XiSquareDistribution = round(XiSquareDistribution * 10000) / 10000;
+			double criticalImportance = 22.36203;
+			cout << "\n > Количество интервалов: " << intervalsCount;
+			int k = intervalsCount - 1;
+			cout << "\n > Ожидаемое число попаданий в интервалы: " << expectedNumOfHits;
+			cout << "\n > Число попаданий в каждый из интервалов: ";
+			for (int i = 0; i < intervalsCount; i++)
+			cout << i + 1 << ": " << realDistribution[i] << endl;
+			cout << "\n > Критическое значение хи-квадрат для " << k << " степеней свобод: " << criticalImportance;
+			cout << "\n > Значение критерия хи-квадрат с " << k << " степенью свободы: " << XiSquareDistribution << "\n";
+			if (0 < XiSquareDistribution && XiSquareDistribution < criticalImportance) {
+				cout << "\n[+++] Критерий пройден\n";
+				return true;
+			}
+			else {
+				cout << "\n[---] Критерий не пройден\n";
+				return false;
+			}
+		}
+		
+		bool checkSeriesCriterion(vector <double> allElems) {
+			int d = 4;
+			vector <vector <int>> nPairs(d);
+			for (int i = 0; i < d; i++)
+			nPairs[i].resize(d, 0);
+			int k = d * d;
+			vector <pair <int, int>> pairCategories;
+			int elemsCount = allElems.size();
+			if (elemsCount % 2 != 0)
+			elemsCount--;
+			for (int j = 0; j < elemsCount; j+=2)
+			{
+				double leftI = floor(allElems[j] * d);
+				double rightI = floor(allElems[j + 1] * d);
+				pairCategories.push_back(make_pair(leftI, rightI));
+			}
+			double criticalImportance = 26.29623;
+			double expectedNumOfHits = round((elemsCount / (2 * k)) * 1000) / 1000;
+			for (int i = 0; i < pairCategories.size(); i++) {
+				nPairs[pairCategories[i].first][pairCategories[i].second] += 1;
+			}
+			double XiSquareDistribution = 0;
+			for (int i = 0; i < nPairs.size(); i++)
+			for (int x = 0; x < nPairs[i].size(); x++)
+			XiSquareDistribution += ((nPairs[i][x] - expectedNumOfHits) * (nPairs[i][x] - expectedNumOfHits)) / expectedNumOfHits;
+			XiSquareDistribution = round(XiSquareDistribution * 1000) / 1000;
+			cout << "\n > Параметр d: " << d;
+			cout << "\n > Ожидаемое количество чисел в каждой категории: " << expectedNumOfHits;
+			cout << "\n > Количество чисел в каждой категории: ";
+			int chCount = 1;
+			for (int i = 0; i < nPairs.size(); i++) {
+				for (int x = 0; x < nPairs[i].size(); x++) {
+					chCount++;
+					cout << "   " << chCount << ": " << nPairs[i][x] << "\n";
+				}
+				chCount++;
+			}
+			cout << "\n > Критическое значение хи-квадрат для " << k << " степеней свобод: " << criticalImportance;
+			cout << "\n > Значение критерия хи-квадрат с " << k << " степенью свободы: " << XiSquareDistribution << "\n";
+			if (0 < XiSquareDistribution && XiSquareDistribution < criticalImportance) {
+				cout << "\n[+++] Критерий пройден\n";
+				return true;
+			}
+			else {
+				cout << "\n[---] Критерий не пройден\n";
+				return false;
+			}
+		}
+		
+		double powDouble(double c, int stepen) {
+			if (stepen == 0)
+			return 1.0;
+			if (stepen == 1)
+			return c;
+			double res = c;
+			for (int i = 2; i <= stepen; i++)
+			res = res * c;
+			return res;
+		}
+		
+		vector < double > InterVector = { 3.84146 , 5.99146, 7.81473, 9.48773, 11.07050, 12.59159, 14.06714, 15.50731, 16.91898, 18.30704, 19.67514, 21.02607, 22.36203, 23.68479, 24.99579, 26.29623, 27.58711, 28.86930, 30.14353, 31.41043, 32.67057, 33.92444, 35.17246, 36.41503, 37.65248, 38.88514, 40.11327, 41.33714, 42.55697, 43.77297 };
+		
+		bool checkIntervalsCriterion(vector <double> allElems) {
+			int t = 10, n = 1000;
+			srand((unsigned int)time(0));
+			double alpha = (double)(rand()) / RAND_MAX, beta = (double)(rand()) / RAND_MAX;
+			while (0.2 >= abs(alpha - beta) || abs(alpha - beta) >= 0.4) {
+				alpha = (double)(rand()) / RAND_MAX;
+				beta = (double)(rand()) / RAND_MAX;
+			}
+			if (beta < alpha) {
+				double dopD = alpha;
+				alpha = beta;
+				beta = dopD;
+			}
+			alpha = round(alpha * 1000) / 1000;
+			beta = round(beta * 1000) / 1000;
+			double p = beta - alpha;
+			int s = 0;
+			vector <int> count, resCount;
+			double XiSquareDistribution = 100000000000.0;
+			double criticalImportance = 100000000000.0;
+			int resT = 100000000000;
+			int intervalsCount = 100000000000;
+			vector <double> resPs;
+			s = 0;
+			count.resize(t + 1, 0);
+			int r = 0;
+			for (int j = 0; j < allElems.size(); j++) {
+				if (alpha <= allElems[j] && allElems[j] < beta) {
+					if (r >= t)
+					count[t]++;
+					else
+					count[r]++;
+					s++;
+					if (s < n)
+					r = 0;
+					else
+					break;
+				}
+				else
+				r++;
+			}
+			vector <double> probs;
+			for (int j = 0; j < t; j++)
+			probs.push_back(round((p * (powDouble(1.0 - p, j))) * 1000) / 1000);
+			double XiSch = 0.0;
+			probs.push_back(powDouble(1.0 - p, t));
+			double criticalImpDop = InterVector[t];
+			int qN = 0;
+			for (int j = 0; j < count.size(); j++)
+			qN += count[j];
+			for (int j = 0; j < probs.size(); j++) {
+				double est = qN * probs[j];
+				if (est == 0.0)
+				break;
+				XiSch += ((count[j] - est) * (count[j] - est)) / est;
+			}
+			if (XiSch < XiSquareDistribution) {
+				XiSquareDistribution = XiSch;
+				criticalImportance = criticalImpDop;
+				resT = t;
+				intervalsCount = n;
+				resPs = probs;
+				resCount = count;
+			}
+			int k = resT + 1;
+			cout << "\n > Максимальная длина интервала (t): " << resT;
+			cout << "\n > Количество интервалов (n): " << intervalsCount;
+			cout << "\n > Границы: alpha = " << alpha << " beta = " << beta;
+			cout << "\n > Пересчитанные вероятности Pr и Pt: \n";
+			cout << "   ";
+			for (int j = 0; j < resPs.size(); j++)
+			cout << resPs[j] << " ";
+			cout << "\n > Подсчитанные значения интервалов длиной 0, 1, ..., t - 1 и >= t (t = " << resT << "): \n";
+			cout << "   ";
+			for (int j = 0; j < resCount.size(); j++)
+			cout << resCount[j] << " ";
+			cout << "\n > Критическое значение хи-квадрат для " << k << " степеней свобод: " << criticalImportance;
+			cout << "\n > Значение критерия хи-квадрат с " << k << " степенью свободы: " << round(XiSquareDistribution * 1000) / 1000 << "\n";
+			if (0 < XiSquareDistribution && XiSquareDistribution < criticalImportance) {
+				cout << "\n[+++] Критерий пройден\n";
+				return true;
+			}
+			else {
+				cout << "\n[---] Критерий не пройден\n";
+				return false;
+			}
+		}
+		
+		bool checkPartitionCriterion(vector <double> allElems) {
+			int d = 8;
+			int k = 5;
+			vector <int> resFives(6, 0);
+			int elemsCount = allElems.size();
+			while (elemsCount % 5 != 0)
+			elemsCount = elemsCount - 1;
+			int sGr = elemsCount / k;
+			for (int i = 0; i < sGr; i++) {
+				set <int> dopGr;
+				for (int j = i * k; j < (i + 1) * k; j++)
+				dopGr.insert(floor(allElems[j] * d));
+				resFives[dopGr.size()] += 1;
+			}
+			double criticalImportance = 9.48773;
+			vector <double> fivePs = { 0, 0.0002, 0.0256, 0.2563, 0.5127, 0.2051 };
+			double XiSquareDistribution = 0;
+			for (int i = 1; i < resFives.size(); i++)
+			XiSquareDistribution = XiSquareDistribution + ((resFives[i] - fivePs[i] * sGr) * (resFives[i] - fivePs[i] * sGr)) / (fivePs[i] * sGr);
+			XiSquareDistribution = round(XiSquareDistribution * 1000) / 1000;
+			cout << "\n > Параметр d: " << d;
+			cout << "\n > Параметр k: " << k;
+			for (int i = 1; i < resFives.size(); i++) {
+				cout << "   Количество пятерок, где " << i << " различных значений: ";
+				cout << resFives[i] << "\n";
+			}
+			cout << "\n > Теоретические вероятности для каждой из пятерок: ";
+			for (int i = 1; i < fivePs.size(); i++)
+			cout << "   " << i << ": " << fivePs[i] << "\n";
+			cout << "\n > Критическое значение хи-квадрат для " << k - 1 << " степеней свобод: " << criticalImportance;
+			cout << "\n > Значение критерия хи-квадрат с " << k - 1 << " степенью свободы: " << XiSquareDistribution << "\n";
+			if (0 < XiSquareDistribution && XiSquareDistribution < criticalImportance) {
+				cout << "\n[+++] Критерий пройден\n";
+				return true;
+			}
+			else {
+				cout << "\n[---] Критерий не пройден\n";
+				return false;
+			}
+		}
+		
+		int dopPermutationFunction(vector <double> permVec) {
+			int r = 4;
+			int fRes = 0;
+			while (r > 0) {
+				int s = 0;
+				double maxV = -10.0;
+				for (int i = 0; i < permVec.size(); i++)
+				if (maxV < permVec[i]) {
+					maxV = permVec[i];
+					s = i;
+				}
+				s++;
+				fRes = r * fRes + s - 1;
+				double dopV = permVec[r - 1];
+				permVec[r - 1] = permVec[s - 1];
+				permVec[s - 1] = dopV;
+				permVec.resize(permVec.size() - 1);
+				r--;
+			}
+			return fRes;
+		}
+		
+		bool checkPermutationsCriterion(vector <double> allElems) {
+			int t = 4;
+			int myT = 1;
+			for (int i = 1; i <= t; i++)
+			myT *= i;
+			int sizeinVals = allElems.size();
+			while (sizeinVals % 4 != 0)
+			sizeinVals = sizeinVals - 1;
+			double criticalImportance = 36.41503;
+			int nGr = sizeinVals / t;
+			vector <int> resCategories(myT, 0);
+			for (int i = 0; i < nGr; i++) {
+				vector <double> cGr;
+				set <double> dopGrc;
+				for (int j = i * t; j < (i + 1) * t; j++) {
+					cGr.push_back(allElems[j]);
+					dopGrc.insert(allElems[j]);
+				}
+				if (dopGrc.size() != t)
+				continue;
+				else
+				resCategories[dopPermutationFunction(cGr)] += 1;
+			}
+			double expectedP = round((1.0 / myT) * 1000) / 1000;
+			double XiSquareDistribution = 0.0;
+			double expectedCategoriesValue = round((expectedP * nGr) * 1000) / 1000;
+			cout << "\n > Параметр t: " << t;
+			cout << "\n > Теоретическое количество попаданий в каждую категорию: " << expectedCategoriesValue;
+			cout << "\n > Вычисленное распределение по частотам: ";
+			for (int i = 0; i < resCategories.size(); i++)
+			cout << resCategories[i] << " ";
+			cout << "\n > Теоретическое значение вероятности для каждой категории: " << expectedP;
+			for (int i = 0; i < myT; i++)
+			XiSquareDistribution = XiSquareDistribution + ((resCategories[i] - expectedCategoriesValue) * (resCategories[i] - expectedCategoriesValue)) / expectedCategoriesValue;
+			XiSquareDistribution = round(XiSquareDistribution * 1000) / 1000;
+			cout << "\n > Критическое значение хи-квадрат для " << myT << " степеней свобод: " << criticalImportance;
+			cout << "\n > Значение критерия хи-квадрат с " << myT << " степенью свободы: " << XiSquareDistribution << "\n";
+			if (0 < XiSquareDistribution && XiSquareDistribution < criticalImportance) {
+				cout << "\n[+++] Критерий пройден\n";
+				return true;
+			}
+			else {
+				cout << "\n[---] Критерий не пройден\n";
+				return false;
+			}
+		}
+		
+		bool checkMonotonicityCriterion(vector <double> allElems) {
+			vector <pair <int, int>> categor;
+			vector <double> ojid;
+			double XiSquareDistribution = 0.0;
+			int posl = 1, i = 1;
+			while (i < allElems.size() - 1) {
+				if (allElems[i] < allElems[i + 1])
+				posl += 1;
+				else {
+					int num = -1;
+					if (categor.size() != 0) {
+						for (int j = 0; j < categor.size(); j++) {
+							if (categor[j].first == posl) {
+								num = j;
+								break;
+							}
+						}
+						if (num == -1)
+						categor.push_back(make_pair(posl, 1));
+						else
+						categor[num].second += 1;
+					}
+					else
+					categor.push_back(make_pair(posl, 1));
+					posl = 1;
+					i = i + 1;
+				}
+				i += 1;
+			}
+			int sumS = 0;
+			for (int j = 0; j < categor.size(); j++)
+			sumS = sumS + categor[j].second;
+			int num_categs = categor.size();
+			double criticalImportance = InterVector[num_categs - 1];
+			int maximal = -1;
+			for (int j = 0; j < categor.size(); j++)
+			if (categor[j].first > maximal)
+			maximal = categor[j].first;
+			long long fact = 1;
+			for (int j = 1; j < maximal + 1; j++) {
+				fact *= j;
+				ojid.push_back(1.0 / fact - 1.0 / (fact * (j + 1)));
+			}
+			for (int j = 0; j < num_categs; j++)
+			ojid[j] = (sumS * ojid[j]);
+			for (int j = 0; j < num_categs; j++)
+			XiSquareDistribution = XiSquareDistribution + round((((categor[j].second - ojid[categor[j].first - 1]) * (categor[j].second - ojid[categor[j].first - 1])) / ojid[categor[j].first - 1]) * 1000) / 1000;
+			cout << "\n > Теоретические значения длин серий: ";
+			for (int j = 0; j < ojid.size(); j++)
+			cout << round(ojid[j]) << " ";
+			cout << "\n > Вычисленные значения длин серий: ";
+			set <pair <int, int>> need;
+			for (int j = 0; j < categor.size(); j++)
+			need.insert(categor[j]);
+			for (pair <int, int> a : need)
+			cout << a.first << ": " << a.second << " ";
+			cout << "\n > Критическое значение хи-квадрат для " << num_categs << " степеней свобод: " << criticalImportance;
+			cout << "\n > Значение критерия хи-квадрат с " << num_categs << " степенью свободы: " << XiSquareDistribution << "\n";
+			if (0 < XiSquareDistribution && XiSquareDistribution < criticalImportance) {
+				cout << "\n[+++] Критерий пройден\n";
+				return true;
+			}
+			else {
+				cout << "\n[---] Критерий не пройден\n";
+				return false;
+			}
+			
+		}
+		
+		vector <pair <int, double>> ConflictCriterionPercentPoints(int m, int n) {
+			vector <double> auxiliaryTableT = { 0.01, 0.05, 0.25, 0.50, 0.75, 0.95, 0.99, 1.0 };
+			vector <double> auxiliaryA(n + 1, 0.0);
+			vector <pair <int, double>> conflictsResP;
+			auxiliaryA[1] = 1.0;
+			int j0 = 1;
+			int j1 = 1;
+			for (int i = 0; i < n - 1; i++) {
+				j1++;
+				for (int j = j1; j > j0 - 1; j--) {
+					double jm = j / (m * 1.0);
+					auxiliaryA[j] = jm * auxiliaryA[j] + (1.0 + 1.0 / m - jm) * auxiliaryA[j - 1];
+					if (auxiliaryA[j] < 1e-20) {
+						auxiliaryA[j] = 0.0;
+						if (j == j1) {
+							j1--;
+							continue;
+						}
+						if (j == j0)
+						j0++;
+					}
+				}
+			}
+			int t = 0;
+			int j = j0 - 1;
+			double p = 0.0;
+			while (t != auxiliaryTableT.size() - 1) {
+				while (p <= auxiliaryTableT[t]) {
+					j++;
+					p += auxiliaryA[j];
+				}
+				conflictsResP.push_back(make_pair(n - j - 1, round((1 - p) * 1000) / 1000));
+				t++;
+			}
+			reverse(conflictsResP.begin(), conflictsResP.end());
+			return conflictsResP;
+			
+		}
+		
+		bool checkConflictCriterion(vector <double> allElems) {
+			srand((unsigned int)time(0));
+			double eps = 1e-20;
+			vector <vector <pair<int, double>>> appropriatePercentPoints;
+			vector <vector <int>> appropriatePointsTable;
+			for (int bigSize = 8; bigSize < 21; bigSize++) {
+				int nParameter = allElems.size() / bigSize;
+				for (int dParameter = 2; dParameter < 9; dParameter++) {
+					int j = 0;
+					vector <int> normSeq;
+					while (j < allElems.size()) {
+						if (allElems[j] == 1.0)
+						allElems[j] = 0.965;
+						normSeq.push_back((floor(allElems[j] * dParameter)));
+						j++;
+					}
+					set <vector <int>> words;
+					int nDimension = 0;
+					for (int jI = 0; jI < nParameter; jI++) {
+						vector <int> dopSliced;
+						for (int i = jI * bigSize; i < (jI + 1) * bigSize; i++) {
+							dopSliced.push_back(normSeq[i]);
+						}
+						auto search = words.find(dopSliced);
+						if (search == words.end())
+						words.insert(dopSliced);
+						else
+						nDimension += 1;
+					}
+					for (int mParameter = 16; mParameter < 129; mParameter++) {
+						int  mV = nParameter * mParameter;
+						vector <pair <int, double>> confs_et_probs = ConflictCriterionPercentPoints(mV, nParameter);
+						if (nDimension == 0 || confs_et_probs[0].first == -1 || confs_et_probs[0].first == 0)
+						continue;
+						if (confs_et_probs[2].first <= nDimension && nDimension <= confs_et_probs[confs_et_probs.size() - 2].first) {
+							appropriatePercentPoints.push_back(confs_et_probs);
+							vector <int> prom = { nDimension, bigSize, nParameter, dParameter, mParameter, mV };
+							appropriatePointsTable.push_back(prom);
+						}
+					}
+				}
+			}
+			int appropriatePercentPointsCount = appropriatePercentPoints.size();
+			set <int> setRand;
+			for (int j = 0; j < 5; j++) {
+				
+				int randInt = (double)(rand()) / RAND_MAX * appropriatePercentPointsCount - 1;
+				auto search1 = setRand.find(randInt);
+				if (search1 == setRand.end())
+				setRand.insert(randInt);
+				else {
+					while (search1 == setRand.end()) {
+						randInt = (double)(rand()) / RAND_MAX * appropriatePercentPointsCount - 1;
+						search1 = setRand.find(randInt);
+					}
+				}
+			}
+			cout << "\n > Число параметров, при которых представленная последовательность удовлетворяет критерию конфликтов: " << appropriatePercentPointsCount;
+			cout << "\n > Приведем случай, которая параметры подходят:";
+			cout << "\n     Размерность вектора Vj: " << appropriatePointsTable[0][1];
+			cout << "\n     Количество векторов: " << appropriatePointsTable[0][2];
+			cout << "\n     Значение m: " << appropriatePointsTable[0][5];
+			cout << "\n     Множитель для m: " << appropriatePointsTable[0][4];
+			cout << "\n     Параметр нормирования d: " << appropriatePointsTable[0][3];
+			cout << "\n     Количество возникших конфликтов: " << appropriatePointsTable[0][0];
+			cout << "\n     Таблица процентных точек: ";
+			for (int k = 0; k < appropriatePercentPoints[0].size(); k++) {
+				cout << "(" << appropriatePercentPoints[0][k].first << ", " << appropriatePercentPoints[0][k].second << ") ";
+			}
+			cout << "\n";
+			if (appropriatePercentPointsCount > 0) {
+				cout << "\n[+++] Критерий пройден\n";
+				return true;
+			}
+			else {
+				cout << "\n[---] Критерий не пройден\n";
+				return false;
+			}
+		}
+		
+		vector <bool> checkCriterions(string inputFileName, bool& errorMessage) {
+			vector <bool> criteriaResults(7);
+			ifstream inFile(inputFileName);
+			string lineFile;
+			vector <double> allElems;
+			if (!inFile.is_open()) {
+				cout << "Ошибка открытия файла " << inputFileName << endl;
+				errorMessage = true;
+				return criteriaResults;
+			}
+			string getlineElem;
+			getline(inFile, getlineElem);
+			stringstream ss(getlineElem);
+			while (getline(ss, getlineElem, ',')) {
+				if (getlineElem.size() > 1)
+				getlineElem[1] = ',';
+				double intElem = stod(getlineElem);
+				allElems.push_back(intElem);
+			}
+			inFile.close();
+			
+			double expValue = calculateExpValue(allElems);
+			cout << "Мат. ожидание: " << round(expValue * 1000) / 1000 << "\n";
+			double standartDeviation = calculateStandartDeviation(allElems, expValue);
+			cout << "Среднекв. отклонение: " << round(standartDeviation * 1000) / 1000 << "\n";
+			double expValueError = calculateExpValueError(expValue);
+			cout << "Погрешность мат. ожидания: " << round(expValueError * 1000) / 1000 << "\n";
+			double standartDeviationError = calculateStandartDeviationError(standartDeviation);
+			cout << "Погрешность среднекв. отклонения: " << round(standartDeviationError * 1000) / 1000 << "\n";
+			
+			bool res = false;
+			cout << "\n ----------------------------------------------------------------------- \n";
+			cout << "\n Критерий Хи-квадрат \n\n";
+			criteriaResults[0] = checkXiSquareCriterion(allElems);
+			cout << "\n ----------------------------------------------------------------------- \n";
+			cout << "\n Критерий серий \n\n";
+			criteriaResults[1] = checkSeriesCriterion(allElems);
+			cout << "\n ----------------------------------------------------------------------- \n";
+			cout << "\n Критерий интервалов \n\n";
+			criteriaResults[2] = checkIntervalsCriterion(allElems);
+			cout << "\n ----------------------------------------------------------------------- \n";
+			cout << "\n Критерий разбиений \n\n";
+			criteriaResults[3] = checkPartitionCriterion(allElems);
+			cout << "\n ----------------------------------------------------------------------- \n";
+			cout << "\n Критерий перестановок \n\n";
+			criteriaResults[4] = checkPermutationsCriterion(allElems);
+			cout << "\n ----------------------------------------------------------------------- \n";
+			cout << "\n Критерий монотонности \n\n";
+			criteriaResults[5] = checkMonotonicityCriterion(allElems);
+			cout << "\n ----------------------------------------------------------------------- \n";
+			cout << "\n Критерий конфликтов \n\n";
+			criteriaResults[6] = checkConflictCriterion(allElems);
+			cout << "\n ----------------------------------------------------------------------- \n";
+			
+			return criteriaResults;
+		}
+		
+		void coutCriterionsResult(vector <bool> criteriaResults) {
+			vector <string> criteriaNames = { "Критерий хи-квадрат", "Критерий серий",  "Критерий интервалов", "Критерий разбиений",  "Критерий перестановок",  "Критерий монотонности",  "Критерий конфликтов"};
+			cout << "\nРезультат тестирования статистических свойств последовательности ПСЧ: \n\n";
+			for (int i = 0; i < criteriaResults.size(); i++)
+			{
+				cout << criteriaNames[i] << ": ";
+				if (criteriaResults[i])
+				cout << "+++" << endl;
+				else
+				cout << "---" << endl;
+			}
+			return;
+		}
+		
+		int main(int argc, char* argv[])
+		{
+			/*
+			Программа для тестирования статистических свойств последовательности ПСЧ
+			*/
+			setlocale(LC_ALL, "Rus");
+			string inputFileName = "rntInput.dat";
+			for (int i = 0; argv[i]; i++)
+			{
+				string checkStr = string(argv[i]);
+				if (findInStr(checkStr, 2) == "/h") {
+					helpFunc();
+					return 0;
+				}
+				if (checkStr.length() > 2) {
+					string ifStr = findInStr(checkStr, 3);
+					string subStr = checkStr.substr(3, checkStr.length());
+					if (ifStr == "/f:") {
+						inputFileName = subStr;
+					}
+				}
+			}
+			bool errorMessage = false;
+			vector <bool> resString = checkCriterions(inputFileName, errorMessage);
+			if (errorMessage)
+			return 0;
+			
+			cout << "Input File: " << inputFileName << endl;
+			
+			coutCriterionsResult(resString);
+			return 0;
+		}
+	\end{minted}
+		
+	\section{Исходный код программы построения графиков}
+	
+	\begin{minted}{python}
+		import matplotlib.pyplot as plt
+		import math
+		
+		def expectedValue(vec):
+			val = 0
+			for i in vec:
+				val = val + i
+			val = val / len(vec)
+			return val
+		
+		f = open("D:\\cpp_projects\\rnt\\Debug\\stOutputLc.dat", "r")
+		#f = open("D:\\cpp_projects\\rnt\\Debug\\stOutputAdd.dat", "r")
+		#f = open("D:\\cpp_projects\\rnt\\Debug\\stOutput5p.dat", "r")
+		#f = open("D:\\cpp_projects\\rnt\\Debug\\stOutputLfsr.dat", "r")
+		#f = open("D:\\cpp_projects\\rnt\\Debug\\stOutputNfsr.dat", "r")
+		#f = open("D:\\cpp_projects\\rnt\\Debug\\stOutputMt.dat", "r")
+		#f = open("D:\\cpp_projects\\rnt\\Debug\\stOutputRc4.dat", "r")
+		#f = open("D:\\cpp_projects\\rnt\\Debug\\stOutputRsa.dat", "r")
+		#f = open("D:\\cpp_projects\\rnt\\Debug\\stOutputBbs.dat", "r")
+		currElem = []
+		mVec = []
+		dVec = []
+		nVec = []
+		acc = 0
+		allElems = list(map(float, (f.read()).split(',')))
+		for a in allElems:
+			currElem.append(float(a))
+			if (len(currElem) % 50 == 0):
+				m = expectedValue(currElem)
+				dev = 0
+				for i in currElem:
+					dev = dev + ((i - m) ** 2)
+				dev = dev / (len(currElem) - 1)
+				d = math.sqrt(dev)
+				acc = acc + 50
+				mVec.append(round(m, 3))
+				dVec.append(round(d, 3))
+				nVec.append(acc)
+		fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(10,10))
+		for i in range(len(nVec)):
+			ax1.scatter(nVec[i], mVec[i], c = 'b', s = 1)
+			ax2.scatter(nVec[i], dVec[i], c = 'b', s = 1)
+		ax1.set_title("Математическое ожидание")
+		ax2.set_title("Среднеквадратическое отклонение")
+		plt.show()
+	\end{minted}
+	%\includepdf[pages=-]{pril-A.pdf}
+
+	%\includepdf[pages=-]{pril-B.pdf}
+	
+\end{document}
